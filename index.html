@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-<title>Recyclafy</title>
+<title>Recyclify</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
-        <h3>Recyclafy - Dividing recycling for you</h3>
+        <h3>Recyclify- Dividing recycling for you</h3>
         
-    <form action="/barcode.php" method="post">
-        <input type = "text" name= "text" class="search" placeholder="Input Search Bar Here">
+    <form action="/recyclify/barcode.php" method="POST">
+        <input type = "text" name= "name" class="search" placeholder="Input Search Bar Here">
+        <input type = "text" name ="barcode_num" class="search" placeholder="Input barcode here">
         <input type = "submit" name="submit" class="submit" value="Search">
     </form>
     </body>
