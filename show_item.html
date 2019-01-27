@@ -12,9 +12,20 @@
         url: 'includes/data.inc.php',
         success: (data) => {
           let parsedData = JSON.parse(data);
-          console.log(parsedData);
-          $('#item').text(parsedData[0]);
-          $('#img').attr("src", "images/"+parsedData[1]);
+          if(!Array.isArray(parsedData[0])) {
+            $('#title').text("Is this your item?");
+            $('#item').append("<h2 class='item'>"+parsedData[0]+"</h2>");
+            $('#holder').prepend("<img class='img' src='images/"+parsedData[1]+"'>");
+            let html = '<input type="button" onclick="redirect(\'yes\')" class="w3-btn w3-white w3-border w3-round-large" value="Yes"> <input type="button" onclick="redirect(\'no\')" class="w3-btn w3-white w3-border w3-round-large" id="no" value="No&nbsp">';
+            $('.w3-container').append(html);
+          } else {
+            $('#title').text("Is any of these your item?");
+            parsedData.forEach(data => {
+              let html = '<form><input type="button" onclick="redirect(\'yes\')" class="w3-btn w3-white w3-border w3-round-large" value="Yes">\
+              &nbsp<input type="button" onclick="redirect(\'no\')" class="w3-btn w3-white w3-border w3-round-large" id="no" value="No&nbsp"></form>';
+              $('#item').append("<h2 class='item'>"+data[0]+"</h2><img class='img' src='images/"+data[1]+"'>"+html);
+            });
+          }
         }
       });
     });
@@ -27,18 +38,16 @@
 
 <a href="index.html" class="button">Home</a>
 
-<h1>Is this your item?</h1>
+<h1 id="title"></h1>
 
 <div class="square">
 
-<h2 id="item"></h2>
+<div id="item"></div>
 
-<img id="img">
+<div id="holder"></div>
 
 <form>
   <div class="w3-container">
-      <input type="button" onclick="redirect('yes')" class="w3-btn w3-white w3-border w3-round-large" value="Yes">
-      <input type="button" onclick="redirect('no')" class="w3-btn w3-white w3-border w3-round-large" value="No">
   </div>
 </form>
 

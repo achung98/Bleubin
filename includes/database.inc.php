@@ -3,8 +3,6 @@
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "recyclify";
+$dbName = "recyclable";
 
 $conn = mysqli_connect($dbServername, $dbUsername,$dbPassword,$dbName);
-
-

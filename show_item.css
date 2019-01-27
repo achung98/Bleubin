@@ -34,20 +34,27 @@ font-size: 18px
 
 div.square {
   margin: auto;
+  padding-bottom: auto;
   border: solid 10px #f6fff0;
   width: 450px;
-  height: 550px;
+  height: 120%;
 }
 
-#img {
+.img {
   display: block;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius:8px;
 }
-
 form {
 	display: flex;
-    justify-content: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+button {
+  margin: 10px;
+}
+#no {
+    padding-left: 20px;
 }
