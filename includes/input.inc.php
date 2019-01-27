@@ -2,8 +2,6 @@
     include_once "database.inc.php";
 
 // if the barcode field is filled then filsl the prepared statement with a name search
-if(isset($_POST['submit']))
-{
 if(isset($_POST['barcode_num']))
 {
     $barcode = mysqli_real_escape_string($conn,$_POST['barcode_num']);
@@ -69,7 +67,6 @@ elseif(isset($_POST['name']))
     }
 
 
-}
 }
 //header('Location: index.html');
 
