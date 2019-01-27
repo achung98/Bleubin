@@ -26,7 +26,7 @@ if(isset($_POST['barcode_num']) || $test)
         //depending on which statement was use, the program will return the name,picture and confirmation if that was your item
         //the app will also display if the item is recyclable (and potentially other information)????
         $row = mysqli_fetch_assoc($result);
-        $data = array($row['name'],$row['picture'],$row['recycable']);
+        $data = array($row['name'],$row['picture'],$row['recyclable']);
         session_start();
         $_SESSION['data'] = $data;
         if(!$test) {
@@ -68,7 +68,7 @@ elseif(isset($_POST['name']))
         //depending on which statement was use, the program will return the name,picture and confirmation if that was your item
         //the app will also display if the item is recyclable (and potentially other information)????
         $row = mysqli_fetch_assoc($result);
-        $data = array($row['name'],$row['picture'],$row['recycable']);
+        $data = array($row['name'],$row['picture'],$row['recyclable']);
         session_start();
         $_SESSION['data'] = $data;
         header("Location: ../show_item.html");
