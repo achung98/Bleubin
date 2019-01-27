@@ -1,0 +1,41 @@
+body{
+	overflow: hidden;
+}
+
+h1 {
+	font-family: Times New Roman;
+	font-size: 9vw;
+	width: 100vw;
+	margin-top: calc(50vh - 10vw);
+	text-align: center;
+	background: linear-gradient(
+		60deg,
+		hsl(22, 79%, 59%) 10%,
+		hsl(22, 80%, 55%) 10%,
+		hsl(22, 80%, 49%) 25%,
+		hsl(22, 80%, 44%) 25%,
+		hsl(22, 80%, 40%) 40%,
+		hsl(22, 80%, 36%) 40%,
+		hsl(22, 80%, 36%) 55%,
+		hsl(22, 80%, 40%) 55%,
+		hsl(22, 80%, 44%) 70%,
+		hsl(22, 80%, 49%) 70%,
+		hsl(22, 80%, 52%) 85%,
+		hsl(22, 80%, 57%) 85%
+	);
+
+	text-shadow: 0.5px -0.6vw #fff4;
+	color: #fff;
+	-webkit-background-clip: text;
+   	-webkit-text-fill-color: transparent;
+   	animation: 8s BeProud linear infinite,
+   	3s Always ease alternate infinite;
+}
+
+@keyframes BeProud {
+	100% { background-position: 100vw 0px; }
+}
+
+@keyframes Always {
+	100% { transform: scale(1.1);}
+}
