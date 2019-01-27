@@ -8,11 +8,11 @@
   display: inline-block;
   font-size: 17px;
   margin: 4px 2px;
-  cursor: pointer;
+  cursor: pointer
 }
 
 body {
-background-image: url('tree.jpeg');
+background-image: url('images/tree.jpeg');
 }
 
 h1   {
@@ -39,11 +39,11 @@ div.square {
   height: 550px;
 }
 
-img {
-  margin-left: 25%;
+#img {
+  display: block;
+  margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  display:inline-block;
   border-radius:8px;
 }
 

@@ -4,6 +4,24 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <head>
   <link rel= "stylesheet" href="show_item.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(window).on("load", () => {
+      $.ajax({
+        type: "GET",
+        url: 'includes/data.inc.php',
+        success: (data) => {
+          let parsedData = JSON.parse(data);
+          console.log(parsedData);
+          $('#item').text(parsedData[0]);
+          $('#img').attr("src", "images/"+parsedData[1]);
+        }
+      });
+    });
+    function redirect(attr) {
+      attr == "yes" ? window.location.replace("recyclable.htlm") : window.location.replace("index.html");
+    }
+  </script>
 </head>
 <body class="back">
 
@@ -13,24 +31,15 @@
 
 <div class="square">
 
-<h2>(insert name of product here)</h2>
+<h2 id="item"></h2>
 
-<img
-src="https://www.w3schools.com/images/lamp.jpg"
-alt="item"
-width=350
-height=350
-style="width:50%;"
-</img>
+<img id="img">
 
-<form
-action="/ImageCorrect.php">
-<div class="w3-container">
-  <p>
-    <input type=button class="w3-btn w3-white w3-border w3-round-large" value="Yes">
-    <input href="index.html" type=button class="w3-btn w3-white w3-border w3-round-large" value="No">
-  </p>
-</div>
+<form>
+  <div class="w3-container">
+      <input type="button" onclick="redirect('yes')" class="w3-btn w3-white w3-border w3-round-large" value="Yes">
+      <input type="button" onclick="redirect('no')" class="w3-btn w3-white w3-border w3-round-large" value="No">
+  </div>
 </form>
 
 </div>

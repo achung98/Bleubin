@@ -1,5 +1,5 @@
 <?php
-    include_once "includes/database.inc.php";
+    include_once "database.inc.php";
 
 // if the barcode field is filled then filsl the prepared statement with a name search
 if(isset($_POST['submit']))
@@ -7,8 +7,8 @@ if(isset($_POST['submit']))
 if(isset($_POST['barcode_num']))
 {
     $barcode = mysqli_real_escape_string($conn,$_POST['barcode_num']);
-    
-    $sql = "SELECT * from ITEMS WHERE barcode_num = $barcode";
+
+    $sql = "SELECT * from ITEM WHERE barcode_num = $barcode";
 
         $result = mysqli_query($conn,$sql);
 
@@ -20,14 +20,13 @@ if(isset($_POST['barcode_num']))
     {
         //depending on which statement was use, the program will return the name,picture and confirmation if that was your item
         //the app will also display if the item is recyclable (and potentially other information)????
-        while($row = mysqli_fetch_assoc($result))
-        {
-            $data = array($row['name'],$row['picture'],$row['picture']);
-            echo $data;
-            header("Location: show_item.html");
-        }
+        $row = mysqli_fetch_assoc($result);
+        $data = array($row['name'],$row['picture'],$row['recyclable']);
+        session_start();
+        $_SESSION['data'] = $data;
+        header("Location: ../show_item.html");
     }
-    
+
 }
 
 
@@ -51,7 +50,7 @@ elseif(isset($_POST['name']))
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         $numberofRows = mysqli_stmt_num_rows($stmt);
-    } 
+    }
     */
         $result = mysqli_query($conn,$sql);
     if(empty($result))
@@ -62,14 +61,14 @@ elseif(isset($_POST['name']))
     {
         //depending on which statement was use, the program will return the name,picture and confirmation if that was your item
         //the app will also display if the item is recyclable (and potentially other information)????
-        while($row = mysqli_fetch_assoc($result))
-        {
-            //echo $result;
-            //displays the
-        }
+        $row = mysqli_fetch_assoc($result);
+        $data = array($row['name'],$row['picture'],$row['recyclable']);
+        session_start();
+        $_SESSION['data'] = $data;
+        header("Location: ../show_item.html");
     }
-        
-    
+
+
 }
 }
 //header('Location: index.html');
