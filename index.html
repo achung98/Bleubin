@@ -5,10 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
-        <h3>Recyclafy - Dividing recycling for you</h3>
-
+      <div class="square">
+        <h3>BleuBin</h3>
+        <h2>Dividing recycling for you</h2>
+      </div>
     <form class="inputForm" action="includes/input.inc.php" method="post">
 
         <input type = "text" id="input" name= "name" class="search" placeholder="Input Name Here">
@@ -19,7 +22,7 @@
 
     </form>
 
-    <div id="barcode-scanner"></div>
+    <p class="error"></p>
 
     <script>
         function changeInput(){
@@ -42,6 +45,16 @@
         function scan_init() {
           window.location.replace("includes/scan.inc.php");
         }
+
+        $.ajax({
+          type: "GET",
+          url: "includes/not-exist.inc.php",
+          success: data => {
+            if(data)
+              $('.error').text("Item " + data + " not found");
+          }
+        })
+
     </script>
     </body>
 </html>

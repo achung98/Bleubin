@@ -1,16 +1,31 @@
 
 body{
-    background-image: url(https://previews.123rf.com/images/rosinka/rosinka1606/rosinka160600001/60909379-vector-drawing-of-oak-.jpg);
-    background-position: center;
+    background-image: url('mountain.jpeg');
     background-repeat: no-repeat;
-    background-size: 300px;
+    background-size: 1800px;
 }
 h3{
     text-align: center;
-    color: green;
+    font-family: Verdana;
+    font-size: 70px;
+    color: #daffdb;
+    padding-bottom: 0px;
+}
+h2{
+    text-align: center;
+    font-family: Verdana;
+    font-size: 30px;
+    color: #daffdb;
+}
+div.square {
+  margin: auto;
+  padding-bottom: auto;
+  border: solid 8px white;
+  width: 98%;
+  height: 110%;
 }
 form {
-    margin-top: 300px;
+    margin-top: 100px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -18,14 +33,16 @@ form {
 .search{
     width:200px;
     font-size: 20px;
+    color: black;
 }
 .submit{
     width:100px;
     margin-left:10px;
     font-size: 20px;
-    background-color: lightgreen;
+    background-color: white;
 }
 .submit2 {
+    color: #daffdb;
     margin-left: 10px;
     font-size: 25px;
 }
@@ -34,4 +51,10 @@ form {
 }
 #scan {
     font-size: 30px;
+}
+.error {
+  font-size: 20px;
+  font-family: 'Verdana';
+  color: white;
+  text-align: center;
 }
