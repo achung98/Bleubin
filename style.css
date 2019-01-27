@@ -25,3 +25,13 @@ form {
     font-size: 20px;
     background-color: lightgreen;
 }
+.submit2 {
+    margin-left: 10px;
+    font-size: 25px;
+}
+#redo {
+    margin-top: 2px;
+}
+#scan {
+    font-size: 30px;
+}

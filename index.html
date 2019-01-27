@@ -9,11 +9,12 @@
     <body>
         <h3>Recyclafy - Dividing recycling for you</h3>
 
-    <form class="inputForm" action="includes/database.inc.php" method="post">
+    <form class="inputForm" action="includes/input.inc.php" method="post">
 
-        <input type = "text" id="input" name= "text" class="search" placeholder="Input Name Here"><i class="fas fa-barcode" onclick="myFunction()"></i>
+        <input type = "text" id="input" name= "name" class="search" placeholder="Input Name Here">
+        <i class="fas fa-redo submit2" id="redo" onclick=changeInput()></i>
+        <i class="fas fa-barcode submit2" id="scan" onclick="scan_init()"></i>
         <input type = "submit" name="submit" class="submit" value="Search">
-        <button type="button" id="scan" onclick="scan_init()">Scan</button>
 
 
     </form>
@@ -21,18 +22,18 @@
     <div id="barcode-scanner"></div>
 
     <script>
-        function myFunction(){
+        function changeInput(){
 
            var inputValue = document.getElementById("input").getAttribute("name");
 
-            if (inputValue == "text"){
+            if (inputValue == "name"){
                 document.getElementById("input").setAttribute('name', 'barcode_num');
                 document.getElementById("input").setAttribute('placeholder', 'Input Barcode Here');
                 console.log(document.getElementById("input").getAttribute("name"))
             }
             else
                 {
-                document.getElementById("input").setAttribute('name', 'text');
+                document.getElementById("input").setAttribute('name', 'name');
                 document.getElementById("input").setAttribute('placeholder', 'Input  Name Here');
                 console.log(document.getElementById("input").getAttribute("name"))
                 }

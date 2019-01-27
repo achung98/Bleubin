@@ -26,11 +26,10 @@ function load_quagga(){
                 Quagga.stop();
                 $.ajax({
                     url: 'input.inc.php',
-                    barcode_num: {'code' : code},
+                    data: {'code': code},
                     type: 'post',
-                    dataType:'json',
                     success: (data) => {
-                        console.log(data);
+                        window.location.replace("../show_item.html");
                     }
                 });
             }
