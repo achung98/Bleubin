@@ -1,10 +1,7 @@
-//=require jquerty
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap-sprockets
-//= require quagga 
-//= require_tree
-//you need to import <script scr="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+function test() {
+  alert("test");
+}
+
 function order_by_occurence(arr) {
     var counts = {}
     arr.forEach(function(value){
@@ -20,8 +17,8 @@ function order_by_occurence(arr) {
 }
 
 function load_quagga(){
- if($('#barcode-scanner').length > 0 && navigator.mediaDevices & typeof navigator.mediaDevices.getUserMedia === 'function'){
-   
+ if($('#barcode-scanner').length > 0 && typeof navigator.mediaDevices.getUserMedia === 'function'){
+   console.log(navigator);
 
     /*var last_result = [];
     if(Quagga.initialized == undefined) {
@@ -39,7 +36,7 @@ function load_quagga(){
        }
     });
    }   */
-   
+
     Quagga.init({
         inputStream : {
             name : "Live",
@@ -47,17 +44,14 @@ function load_quagga(){
             numOfWorkers: navigator.hardwareConcurrency,
             target : document.querySelector('#barcode-scanner')
         },
-        decoder: {  
-            reader: ['ean_reader','ean_8_reader','code_39_reader','code_39_vin_reader','codabar_reader','upc_reader','upc_e_reader']           
+        decoder: {
+            reader: ['ean_reader','ean_8_reader','code_39_reader','code_39_vin_reader','codabar_reader','upc_reader','upc_e_reader']
         }
      },function(err) {
          if(err) { console.log(err); return; }
-         Quagga.initialized = true;
          Quagga.start();
 
  });
 
 }
 };
-$(document).onabort('turbolinks:load',load_quagga);
-    
