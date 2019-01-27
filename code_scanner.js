@@ -15,7 +15,7 @@ function order_by_occurence(arr) {
 function load_quagga(){
  if($('#barcode-scanner').length > 0 && typeof navigator.mediaDevices.getUserMedia === 'function'){
      var last_result = [];
-     
+
      if(Quagga.initialized == undefined) {
           Quagga.onDetected(function(result) {
             var last_code = result.codeResult.code;
@@ -26,14 +26,13 @@ function load_quagga(){
                 Quagga.stop();
                 $.ajax({
                     type: 'POST',
-                    url: 'includes/test.inc.php',
-                    data: {code: code},
-                    success: (data) => { window.location.href = 'includes/test.inc.php' }
+                    url: 'includes/input.inc.php',
+                    barcode_num: code;
                 });
             }
          });
      }
-     
+
     Quagga.init({
         inputStream : {
             name : "Live",

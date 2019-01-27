@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-<title>Recyclafy</title>
+      <title>Recyclafy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
         <h3>Recyclafy - Dividing recycling for you</h3>
-        
-    <div class="inputForm" action="/barcode.php" method="post">
-        
+
+    <form class="inputForm" action="includes/database.inc.php" method="post">
+
         <input type = "text" id="input" name= "text" class="search" placeholder="Input Name Here"><i class="fas fa-barcode" onclick="myFunction()"></i>
         <input type = "submit" name="submit" class="submit" value="Search">
-        
-    </div>
-         
+        <button type="button" id="scan" onclick="scan_init()">Scan</button>
+
+
+    </form>
+
+    <div id="barcode-scanner"></div>
+
     <script>
         function myFunction(){
-            
+
            var inputValue = document.getElementById("input").getAttribute("name");
-            
+
             if (inputValue == "text"){
                 document.getElementById("input").setAttribute('name', 'barcode_num');
                 document.getElementById("input").setAttribute('placeholder', 'Input Barcode Here');
@@ -32,6 +36,10 @@
                 document.getElementById("input").setAttribute('placeholder', 'Input  Name Here');
                 console.log(document.getElementById("input").getAttribute("name"))
                 }
+        }
+
+        function scan_init() {
+          window.location.replace("includes/scan.inc.php");
         }
     </script>
     </body>
