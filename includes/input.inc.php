@@ -19,7 +19,8 @@ if(isset($_POST['barcode_num']) || $test)
 
      if(!$result || mysqli_num_rows($result) <= 0)
      {
-         echo "No items found with barcode number $barcode";
+         $_SESSION['failed'] = $barcode;
+         header("Location: ../index.html");
      }
      else
     {
@@ -61,7 +62,22 @@ elseif(isset($_POST['name']))
    $result = mysqli_query($conn,$sql);
      if(!$result || mysqli_num_rows($result) <= 0)
      {
-         echo "No items found named $name";
+         $sql = "SELECT * from items WHERE keyword = '$name'";
+         $result = mysqli_query($conn,$sql);
+         if(!$result || mysqli_num_rows($result) <= 0)
+         {
+           $_SESSION['failed'] = $name;
+           header("Location: ../index.html");
+         } else {
+           $GLOBALS['data'] = [];
+           while($row = mysqli_fetch_assoc($result)) {
+             $temp = array($row['name'],$row['picture'],$row['recyclable']);
+             array_push($data, $temp);
+             session_start();
+             $_SESSION['data'] = $data;
+             header("Location: ../show_item.html");
+           }
+         }
      }
     else
     {
