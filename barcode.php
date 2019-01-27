@@ -22,6 +22,8 @@ if(isset($_POST['barcode_num']))
         //the app will also display if the item is recyclable (and potentially other information)????
         while($row = mysqli_fetch_assoc($result))
         {
+            $data = array($row['name'],$row['picture'],$row['picture']);
+            echo $data;
             header("Location: show_item.html");
         }
     }
