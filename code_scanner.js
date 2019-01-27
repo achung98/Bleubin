@@ -25,9 +25,13 @@ function load_quagga(){
                 last_result = [];
                 Quagga.stop();
                 $.ajax({
-                    type: 'POST',
-                    url: 'includes/input.inc.php',
-                    barcode_num: code;
+                    url: 'input.inc.php',
+                    barcode_num: {'code' : code},
+                    type: 'post',
+                    dataType:'json',
+                    success: (data) => {
+                        console.log(data);
+                    }
                 });
             }
          });
