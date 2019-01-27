@@ -18,24 +18,23 @@ function order_by_occurence(arr) {
 
 function load_quagga(){
  if($('#barcode-scanner').length > 0 && typeof navigator.mediaDevices.getUserMedia === 'function'){
-   console.log(navigator);
+    var last_result = [];
 
-    /*var last_result = [];
     if(Quagga.initialized == undefined) {
     Quagga.onDetected(function(result) {
        var last_code = result.codeResult.code;
        last_result.push(last_code);
-       if(last_result.length > 10) {
-       code - order_by_occurence(last_result)[0];
-       Quagga.stop();
-       $.ajax({
-           type: "POST"
-           url: '/products.get_barcode',
-           data: {upc: last code}
-          });
-       }
+       if(last_result.length > 15) {
+         let code = order_by_occurence(last_result)[0];
+         Quagga.stop();
+         $.ajax({
+             type: "POST"
+             url: 'includes/test.inc.php',
+             data: {upc: code}
+            });
+        }
     });
-   }   */
+   }
 
     Quagga.init({
         inputStream : {
@@ -49,9 +48,9 @@ function load_quagga(){
         }
      },function(err) {
          if(err) { console.log(err); return; }
+         Quagga.initialized = true;
          Quagga.start();
-
- });
-
-}
+       });
+   });
+  }
 };
