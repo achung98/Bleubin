@@ -1,7 +1,3 @@
-function test() {
-  alert("test");
-}
-
 function order_by_occurence(arr) {
     var counts = {}
     arr.forEach(function(value){
@@ -18,24 +14,26 @@ function order_by_occurence(arr) {
 
 function load_quagga(){
  if($('#barcode-scanner').length > 0 && typeof navigator.mediaDevices.getUserMedia === 'function'){
-    var last_result = [];
-
-    if(Quagga.initialized == undefined) {
-    Quagga.onDetected(function(result) {
-       var last_code = result.codeResult.code;
-       last_result.push(last_code);
-       if(last_result.length > 15) {
-         let code = order_by_occurence(last_result)[0];
-         Quagga.stop();
-         $.ajax({
-             type: "POST"
-             url: 'includes/test.inc.php',
-             data: {upc: code}
-            });
-        }
-    });
-   }
-
+     var last_result = [];
+     
+     if(Quagga.initialized == undefined) {
+          Quagga.onDetected(function(result) {
+            var last_code = result.codeResult.code;
+            last_result.push(last_code);
+            if(last_result.length > 20) {
+                code = order_by_occurence(last_result)[0];
+                last_result = [];
+                Quagga.stop();
+                $.ajax({
+                    type: 'POST',
+                    url: 'includes/test.inc.php',
+                    data: {code: code},
+                    success: (data) => { window.location.href = 'includes/test.inc.php' }
+                });
+            }
+         });
+     }
+     
     Quagga.init({
         inputStream : {
             name : "Live",
@@ -44,13 +42,16 @@ function load_quagga(){
             target : document.querySelector('#barcode-scanner')
         },
         decoder: {
-            reader: ['ean_reader','ean_8_reader','code_39_reader','code_39_vin_reader','codabar_reader','upc_reader','upc_e_reader']
+                readers : [{
+                    format: "ean_reader",
+                    config: {}
+                }]
         }
      },function(err) {
          if(err) { console.log(err); return; }
          Quagga.initialized = true;
          Quagga.start();
-       });
    });
   }
 };
+$(document).on('turbolinks:load', load_quagga);
