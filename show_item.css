@@ -43,6 +43,8 @@ div.square {
 .img {
   display: block;
   margin: auto;
+    width: 260px;
+    height: 300px;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius:8px;
