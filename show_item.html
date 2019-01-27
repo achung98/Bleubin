@@ -20,8 +20,8 @@
             $('.w3-container').append(html);
           } else {
             $('#title').text("Is any of these your item?");
-            parsedData.forEach(data => {
-              let html = '<form><input type="button" onclick="redirect(\'yes\')" class="w3-btn w3-white w3-border w3-round-large" value="Yes">\
+            parsedData.forEach((data, i) => {
+              let html = '<form><input type="button" onclick="redirect(\'yes\','+i+')" class="w3-btn w3-white w3-border w3-round-large" id="'+i+'" value="Yes">\
               &nbsp<input type="button" onclick="redirect(\'no\')" class="w3-btn w3-white w3-border w3-round-large" id="no" value="No&nbsp"></form>';
               $('#item').append("<h2 class='item'>"+data[0]+"</h2><img class='img' src='images/"+data[1]+"'>"+html);
             });
@@ -29,8 +29,25 @@
         }
       });
     });
-    function redirect(attr) {
-      attr == "yes" ? window.location.replace("recyclable.htlm") : window.location.replace("index.html");
+    function redirect(attr, id) {
+      if(attr == "yes") {
+          $.ajax({
+              type: "GET",
+              url: "includes/data.inc.php",
+              success: (data) => {
+                let parsedData =  JSON.parse(data);
+                if(!Array.isArray(parsedData[0])) {
+                  let redirect = parsedData[2];
+                  redirect == 1 ? window.location.replace("recyclable.html") : window.location.replace("notrecyclable.html");
+                } else {
+                  let redirect = parsedData[id][2];
+                  redirect == 1 ? window.location.replace("recyclable.html") : window.location.replace("notrecyclable.html");
+                }
+              }
+          });
+      } else {
+          window.location.replace("index.html");
+      }
     }
   </script>
 </head>
