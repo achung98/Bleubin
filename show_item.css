@@ -1,39 +1,48 @@
 .button {
   background-color: #4CAF50;
-  border: none;
+  border: 8px #f6fff0;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 35px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 17px;
   margin: 4px 2px;
   cursor: pointer;
 }
 
 body {
-background-color: #d5ffba;
+background-image: url('tree.jpeg');
 }
 
 h1   {
-color: green;
+color: #f6fff0;
 text-align: center;
 font-family: Verdana;
 line-height: normal;
 font-weight: 100;
 }
 
-div {
-margin: auto;
-max-width: 450px;
-height: 500px;
-background-color: #e2ffd1;
+h2   {
+color: #f6fff0;
+text-align: center;
+font-family: Verdana;
+line-height: normal;
+font-weight: 100;
+font-size: 18px
+}
+
+div.square {
+  margin: auto;
+  border: solid 10px #f6fff0;
+  width: 450px;
+  height: 550px;
 }
 
 img {
   margin-left: 25%;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display:inline-block;
   border-radius:8px;
 }
