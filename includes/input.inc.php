@@ -19,6 +19,7 @@ if(isset($_POST['barcode_num']) || $test)
 
      if(!$result || mysqli_num_rows($result) <= 0)
      {
+         session_start();
          $_SESSION['failed'] = $barcode;
          header("Location: ../index.html");
      }
@@ -66,6 +67,7 @@ elseif(isset($_POST['name']))
          $result = mysqli_query($conn,$sql);
          if(!$result || mysqli_num_rows($result) <= 0)
          {
+           session_start();
            $_SESSION['failed'] = $name;
            header("Location: ../index.html");
          } else {

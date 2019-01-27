@@ -52,3 +52,9 @@ form {
 #scan {
     font-size: 30px;
 }
+.error {
+  font-size: 20px;
+  font-family: 'Verdana';
+  color: white;
+  text-align: center;
+}
